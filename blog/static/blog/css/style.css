@@ -1,0 +1,212 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    color: #000000;
+    font-family: "Avenir Next", "Avenir", sans-serif;
+  }
+  
+  /* Simple Hamburger Menu */
+  #toggleCheckbox {
+    display: none;
+  }
+  
+  #toggleLabel {
+    display: block;
+    cursor: pointer;
+    width: 30px;
+    height: 20px;
+  }
+  
+  #toggleLabel span,
+  #menuToggle input:checked ~ span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: #cdcccc;
+    margin-bottom: 5px;
+    transition: all 0.3s ease-in-out;
+    transform-origin: 4px 0px;
+  }
+  
+  #menuToggle input:checked ~ span:nth-child(1),
+  #menuToggle input:checked ~ span:nth-child(3) {
+    opacity: 1;
+    background: #cdcccc;
+  }
+  
+  #menuToggle input:checked ~ span:nth-child(1) {
+    transform: rotate(45deg) translate(-2px, -1px);
+  }
+  
+  #menuToggle input:checked ~ span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  #menuToggle input:checked ~ span:nth-child(3) {
+    transform: rotate(-45deg) translate(0, -1px);
+  }
+  
+  /* Styling for the menu */
+  #menu {
+    position: relative;
+    width: 200px;
+    top: 0;
+    left: -200px;
+    background: #cdcccc;
+    list-style-type: none;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: left 0.3s ease-in-out;
+  }
+  
+  #menuToggle input:checked ~ #menu {
+    left: 0;
+  }
+  
+  #menu li {
+    padding: 10px 0;
+    font-size: 16px;
+  }
+  
+  #menu a {
+    text-decoration: none;
+    color: hsl(0, 0%, 0%);
+    display: block;
+  }
+  
+  #menu a:hover {
+    background-color: #ffffff;
+  }
+  
+  /* Original styles for other elements */
+  #menuToggle {
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  
+  #menuToggle a:hover {
+    color: rgb(0, 0, 0);
+  }
+  .articles-list {
+  display: none;
+}
+  .content {
+    max-width: 800px; /* 或者您想要的任何最大宽度 */
+    margin: 0 auto; /* 这将自动调整左右边距来居中内容 */
+    padding: 20px; /* 这可以给内容区域一些空间 */
+    margin-left: 180px; /* 或者足够的空间以避免和菜单重叠 */
+}
+ .button-style {
+  padding: 10px 15px; /* 按钮内边距 */
+  background-color: #007bff; /* 按钮背景颜色 */
+  color: white; /* 文字颜色 */
+  text-align: center; /* 文字居中 */
+  text-decoration : none
+}
+.prev, .next {
+  display: inline-block;
+  padding: 8px 15px; /* 调整按钮的内边距大小 */
+  margin: 5px; /* 添加一些外边距，使按钮不会相互贴紧 */
+  background-color: #007bff; /* 按钮的背景颜色 */
+  color: white; /* 文字颜色 */
+  text-decoration: none; /* 去除下划线 */
+  font-weight: bold; /* 文字加粗 */
+  border: none; /* 无边框 */
+  border-radius: 4px; /* 边框圆角 */
+  transition: background-color 0.2s, color 0.2s; /* 鼠标悬停时的过渡效果 */
+}
+
+.prev:hover, .next:hover {
+  background-color: #0056b3; /* 鼠标悬停时的背景颜色 */
+  color: #ffd700; /* 鼠标悬停时的文字颜色 */
+}
+.chapter-title-container {
+  position: relative;
+  padding-right: 30px; /* 给箭头留出空间 */
+}
+.expand-arrow {
+  display: inline-block;
+  width: 12px; /* 或根据您的设计调整 */
+  height: 12px; /* 或根据您的设计调整 */
+  border-right: 3px solid #333; /* 调整颜色和粗细 */
+  border-bottom: 3px solid #333; /* 调整颜色和粗细 */
+  transform: rotate(45deg);
+  cursor: pointer;
+  position: absolute;
+  right: 0; /* 定位到右侧 */
+  top: 50%; /* 垂直居中 */
+  transform: translateY(-50%) rotate(45deg); /* 调整位置和旋转 */
+  margin-right: 10px; /* 如果需要，可以调整右边距 */
+}
+/* 当文章列表展开时，箭头向上 */
+.rotate-up {
+  transform: translateY(-50%) rotate(-135deg); 
+}
+
+
+
+/* 添加到您的 static/css/style.css 文件 */
+article {
+  font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+h1, h2, h3 {
+  color: #333;
+}
+
+p {
+  color: #666;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+pre {
+  background-color: #f7f7f7; /* 代码块的背景颜色 */
+  border: 1px solid #e1e1e8; /* 代码块的边框颜色 */
+  border-left: 3px solid #f36d33; /* 代码块左侧的装饰边条 */
+  padding: 10px; /* 代码块的内边距 */
+  overflow: auto; /* 如果代码很长，出现滚动条 */
+  line-height: 1.5; /* 行高 */
+  margin-bottom: 16px; /* 与其他元素的间隔 */
+}
+code {
+  background-color: #f4f4f4;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+}
+
+blockquote {
+  border-left: 3px solid #ccc;
+  padding-left: 10px;
+  margin-left: 0;
+  color: #aaa;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+/* 这是一个简单的水平线样式 */
+hr {
+  border: 0;
+  height: 1px;
+  background: #333;
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- 在您的 base.html 的 <head> 部分添加 -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+    <!-- 初始化 highlight.js -->
+    <script>hljs.initHighlightingOnLoad();</script>
+    <title>{% block title %}My Learning Site{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/style.css' %}">
+    <!-- 确保添加jQuery库 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <nav role="navigation">
+      <div id="menuToggle">
+        <input type="checkbox" id="toggleCheckbox">
+        <label for="toggleCheckbox" id="toggleLabel">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <ul id="menu">
+          <a href="{% url 'blog:chapter_list' %}"><li>首页</li></a>
+          
+          {% for chapter in chapters %}
+            <li class="chapter-item">
+                <div class="chapter-title-container">
+                    <span class="chapter-title" data-chapter-id="{{ chapter.id }}">{{ chapter.title }}</span>
+          <!-- 添加一个用于展开的箭头 -->
+                    <span class="expand-arrow"></span> <!-- 这里的字符是一个向下的箭头 -->
+                </div>
+                <ul class="articles-list">
+                    {% for post in chapter.posts.all %}
+                        <li><a href="{% url 'blog:post_detail' post.id %}">{{ post.title }}</a></li>
+          {% endfor %}
+      </ul>
+  </li>
+{% endfor %}
+
+        </ul>
+      </div>
+    </nav>
+    
+    <div class="content">
+        {% block content %}
+        <h1>Welcome to My Learning Site</h1>
+        <p>This is the home page. I'm writing this website for deepening my UNDERSTAND of Deep Learing and recording the PROCEDURE and THOUGHT of some DL experiments.
+            Welcome to discuss. If you want, you can contact me by emailing to huyuanze1210@163.com or adding QQ 420072456. </p>
+        {% endblock %}
+    </div>
+    
+
+    <!-- JavaScript to handle the chapter click and toggle articles list -->
+    <script>
+$(document).ready(function() {
+    $('.expand-arrow').click(function() {
+        // Toggle the articles list for the chapter
+        $(this).closest('.chapter-item').find('.articles-list').slideToggle();
+        // Toggle the arrow direction
+        $(this).toggleClass('rotate-up');
+    });
+});
+
+    </script>
+</body>
+</html>

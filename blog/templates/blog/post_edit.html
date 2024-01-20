@@ -1,0 +1,16 @@
+{% extends "blog/base.html" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+    <header>
+        <h1>{{ post.title }}</h1>
+    </header>
+    <article>
+        {{ post.content|safe }} <!-- 使用 |safe 确保 HTML 被正确渲染 -->
+    </article>
+    
+    <nav class="post-navigation">
+        <!-- 导航链接保持不变 -->
+</nav>
+{% endblock content %}

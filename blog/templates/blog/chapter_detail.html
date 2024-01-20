@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- ... -->
+</head>
+<body>
+    <!-- 你的汉堡菜单代码放在这里 -->
+    <div id="main-content">
+        <h1>{{ chapter.title }}</h1>
+        <ul>
+            {% for post in chapter.posts.all %}
+            <li><a href="{% url 'blog:post_detail' post.pk %}">{{ post.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% extends "blog/base.html" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+    <header>
+        <h1>{{ post.title }}</h1>
+    </header>
+    <article>
+        {{ post.content|linebreaks }}
+        
+        <!-- 动态插入图片 -->
+        {% if post.image %}
+            <div class="post-image">
+                <img src="{{ post.image.url }}" alt="{{ post.title }}" style="width: 500px; height: auto;">
+            </div>
+        {% endif %}
+        
+        <!-- 动态插入代码 -->
+        {% if post.code %}
+            <pre><code class="language-python">{{ post.code }}</code></pre>
+        {% endif %}
+    </article>
+    
+    <nav class="post-navigation">
+        {% if prev_post %}
+            <a href="{% url 'blog:post_detail' prev_post.id %}" class="prev">上一篇: {{ prev_post.title }}</a>
+        {% endif %}
+        {% if next_post %}
+            <a href="{% url 'blog:post_detail' next_post.id %}" class="next">下一篇: {{ next_post.title }}</a>
+        {% endif %}
+    </nav>
+{% endblock content %}

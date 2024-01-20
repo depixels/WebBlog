@@ -1,0 +1,152 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    color: #000000;
+    font-family: "Avenir Next", "Avenir", sans-serif;
+  }
+  
+  /* Simple Hamburger Menu */
+  #toggleCheckbox {
+    display: none;
+  }
+  
+  #toggleLabel {
+    display: block;
+    cursor: pointer;
+    width: 30px;
+    height: 20px;
+  }
+  
+  #toggleLabel span,
+  #menuToggle input:checked ~ span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: #db7a7a;
+    margin-bottom: 5px;
+    transition: all 0.3s ease-in-out;
+    transform-origin: 4px 0px;
+  }
+  
+  #menuToggle input:checked ~ span:nth-child(1),
+  #menuToggle input:checked ~ span:nth-child(3) {
+    opacity: 1;
+    background: #db7a7a;
+  }
+  
+  #menuToggle input:checked ~ span:nth-child(1) {
+    transform: rotate(45deg) translate(-2px, -1px);
+  }
+  
+  #menuToggle input:checked ~ span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  #menuToggle input:checked ~ span:nth-child(3) {
+    transform: rotate(-45deg) translate(0, -1px);
+  }
+  
+  /* Styling for the menu */
+  #menu {
+    position: absolute;
+    width: 200px;
+    top: 0;
+    left: -200px;
+    background: #db7a7a;
+    list-style-type: none;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: left 0.3s ease-in-out;
+  }
+  
+  #menuToggle input:checked ~ #menu {
+    left: 0;
+  }
+  
+  #menu li {
+    padding: 10px 0;
+    font-size: 16px;
+  }
+  
+  #menu a {
+    text-decoration: none;
+    color: hsl(0, 0%, 0%);
+    display: block;
+  }
+  
+  #menu a:hover {
+    background-color: #ffffff;
+  }
+  
+  /* Original styles for other elements */
+  #menuToggle {
+    display: block;
+    position: relative;
+    top: 50px;
+    left: 0px;
+    z-index: 1;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  
+  #menuToggle a:hover {
+    color: rgb(0, 0, 0);
+  }
+  
+  .articles-list {
+    display: none;
+  }
+  
+  .chapter-item:hover .articles-list {
+    display: block;
+  }
+  
+  .content {
+    max-width: 800px; /* 或者您想要的任何最大宽度 */
+    margin: 0 auto; /* 这将自动调整左右边距来居中内容 */
+    padding: 20px; /* 这可以给内容区域一些空间 */
+    margin-left: 180px; /* 或者足够的空间以避免和菜单重叠 */
+}
+ .button-style {
+  padding: 10px 15px; /* 按钮内边距 */
+  background-color: #007bff; /* 按钮背景颜色 */
+  color: white; /* 文字颜色 */
+  text-align: center; /* 文字居中 */
+  text-decoration : none
+}
+.prev, .next {
+  display: inline-block;
+  padding: 8px 15px; /* 调整按钮的内边距大小 */
+  margin: 5px; /* 添加一些外边距，使按钮不会相互贴紧 */
+  background-color: #007bff; /* 按钮的背景颜色 */
+  color: white; /* 文字颜色 */
+  text-decoration: none; /* 去除下划线 */
+  font-weight: bold; /* 文字加粗 */
+  border: none; /* 无边框 */
+  border-radius: 4px; /* 边框圆角 */
+  transition: background-color 0.2s, color 0.2s; /* 鼠标悬停时的过渡效果 */
+}
+
+.prev:hover, .next:hover {
+  background-color: #0056b3; /* 鼠标悬停时的背景颜色 */
+  color: #ffd700; /* 鼠标悬停时的文字颜色 */
+}
+.expand-arrow {
+  cursor: pointer; /* 显示为可点击的光标 */
+  padding-left: 5px; /* 留出空间 */
+  transition: transform 0.3s ease; /* 添加动画效果 */
+}
+
+/* 当文章列表展开时，箭头向上 */
+.rotate-up {
+  transform: rotate(-180deg);
+}
+
+
+
+h1 {
+  color: #333; /* 更深的字体颜色提高可读性 */
+  text-align: center; /* 如果您想要标题居中 */
+  font-size: 2em; /* 调整大小以符合您的设计 */
+}
