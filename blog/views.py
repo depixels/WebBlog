@@ -44,7 +44,7 @@ def post_detail(request, pk):
     return render(request, 'blog/post_detail.html', {'post': post, 'prev_post': prev_post, 'next_post': next_post})
 '''
 
-import markdown
+'''import markdown
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -52,6 +52,51 @@ def post_detail(request, pk):
     # 将 Markdown 转换为 HTML
     post.content = markdown.markdown(post.content, extensions=['fenced_code', 'codehilite'])
     
+    # 获取前一篇和后一篇文章
+    prev_post = Post.objects.filter(id__lt=post.id).order_by('-id').first()
+    next_post = Post.objects.filter(id__gt=post.id).order_by('id').first()
+
+    # 确保将所有必要的变量传递给模板
+    context = {
+        'post': post,
+        'prev_post': prev_post,
+        'next_post': next_post,
+    }
+
+    return render(request, 'blog/post_detail.html', context)
+'''
+'''import markdown2
+
+def post_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    
+    # Using markdown2 to convert Markdown to HTML with MathJax support
+    post.content = markdown2.markdown(post.content, extras=['fenced-code-blocks', 'code-friendly', 'mathjax'])
+
+    # Get the previous and next posts
+    prev_post = Post.objects.filter(id__lt=post.id).order_by('-id').first()
+    next_post = Post.objects.filter(id__gt=post.id).order_by('id').first()
+
+    # Ensure all necessary variables are passed to the template
+    context = {
+        'post': post,
+        'prev_post': prev_post,
+        'next_post': next_post,
+    }
+
+    return render(request, 'blog/post_detail.html', context)
+
+'''
+
+import markdown_it
+
+def post_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    
+    # 使用 markdown-it-py 转换 Markdown 到 HTML
+    md = markdown_it.MarkdownIt()
+    post.content = md.render(post.content)
+
     # 获取前一篇和后一篇文章
     prev_post = Post.objects.filter(id__lt=post.id).order_by('-id').first()
     next_post = Post.objects.filter(id__gt=post.id).order_by('id').first()
